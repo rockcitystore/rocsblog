@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{! Page Meta }}
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+
+    <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
+
+    {{! Styles'n'Scripts }}
+   <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+  <link rel="stylesheet" type="text/css" href="//fonts.useso.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" />
+	 <link rel="stylesheet" href="{{asset "swiper/animate.css"}}" />
+   <link rel="stylesheet" href="{{asset "swiper/swiper.css"}}" />
+	<link rel="stylesheet" href="{{asset "highlight/styles/atelier-sulphurpool.light.css"}}" />
+  <link rel="stylesheet" href="{{asset "bootflat/css/bootflat.css"}}">
+	<link rel="stylesheet" href="{{asset "magnific-popup/magnific-popup.css"}}" />
+
+
+	
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+
+    
+    
+    
+    
+    
+    
+    
+</head>
+
+<body class="{{body_class}} nav-closed ">
+		
+
+
+	
+	  
+
+
+
+
+
+
+    {{navigation}}
+
+	 	
+    <div class="site-wrapper ">
+			<div class="swiper-container">
+        <div class="swiper-wrapper " >
+         <div class="swiper-slide"> 
+ 
+
+
+        
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+
+
+        <!-- Add Pagination -->
+     <div class="swiper-scrollbar"></div>	
+	
+
+
+
+
+
+
+
+
+		<!-- cd-top -->
+		<a class="icon-arrow-left cd-top" href="#content" data-offset="-45"><span class="hidden">&#x8FD4;&#x56DE;&#x9876;&#x90E8;</span></a>
+			
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://rocs.aliapp.com/ghost">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+            <section class="poweredby">Powered by <a href="https://github.com/TryGhost">Ghost</a></section>
+        </footer>
+</div>
+</div>
+ </div>
+    </div>
+
+	
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+
+    {{! The main JavaScript file for Casper }}
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+	 <script type="text/javascript" src="{{asset "swiper/swiper.jquery.js"}}"></script>
+	<script type="text/javascript" src="{{asset "swiper/swiper.animate1.0.2.min.js"}}"></script>
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+	<script type="text/javascript" src="{{asset "highlight/highlight.pack.js"}}"></script>
+	<script src="{{asset "magnific-popup/jquery.magnific-popup.js"}}"></script>
+
+	<script>
+
+
+	
+
+if(window.screen.width <1440){
+
+	
+ var mySwiper = new Swiper ('.swiper-container', {
+  onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+    swiperAnimateCache(swiper); //隐藏动画元素 
+   	 swiperAnimate(swiper); //初始化完成开始动画
+  }, 
+  onTouchMove: function(swiper){ 
+	
+	}
+  })   
+
+}else{
+
+	/*返回顶部*/
+	var offset = 300,
+		offset_opacity = 1200,
+		scroll_top_duration = 700,
+		$back_to_top = $('.cd-top');
+		var $menu_button = $('.icon-menu');
+	$(window).scroll(function(){
+		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+		( $(this).scrollTop() > offset ) ? $menu_button.addClass('menu-button-tran').removeClass('menu-button') : $menu_button.removeClass('menu-button-tran').addClass('menu-button');
+		if( $(this).scrollTop() > offset_opacity ) { 
+			$back_to_top.addClass('cd-fade-out');
+		}
+	});
+
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 
+		 	}, scroll_top_duration
+		);
+	});
+
+		
+}//
+$(document).ready(function() {
+	
+
+
+
+					/*灯箱*/
+	$('.zoom-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		closeOnContentClick: false,
+		closeBtnInside: false,
+		mainClass: 'mfp-with-zoom mfp-img-mobile',
+		image: {
+			verticalFit: true,
+			titleSrc: function(item) {
+				return item.el.attr('title')+ ' &middot; '+ item.el.attr('id') + ' &middot; <small><a class="image-source-link" href="'+item.el.attr('href')+'" target="_blank">&#x67E5;&#x770B;&#x539F;&#x56FE;</a></small>';
+			}
+		},
+		gallery: {
+			enabled: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300, // don't foget to change the duration also in CSS
+			opener: function(element) {
+				return element.find('img');
+			}
+		}
+		
+	});
+
+				/*语法高亮*/
+	$('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+
+
+    
+
+
+
+
+
+
+
+});
+		/*动态加载css js*/
+function loadjscssfile(filename, filetype) {
+ 
+    if (filetype == "js") {
+        var fileref = document.createElement('script');
+        fileref.setAttribute("type", "text/javascript");
+        fileref.setAttribute("src", filename);
+    } else if (filetype == "css") {
+ 
+        var fileref = document.createElement('link');
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+    }
+    if (typeof fileref != "undefined") {
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+    }
+ 
+}
+   
+	</script>
+	</body>
+</html>

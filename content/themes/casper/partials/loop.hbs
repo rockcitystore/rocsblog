@@ -1,0 +1,44 @@
+{{! Previous/next page links - only displayed on page 2+ }}
+<div class="extra-pagination inner">
+    {{pagination}}
+</div>
+
+	
+
+   
+
+
+<div class="timeline">
+<dlb>
+				
+    
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+<ddb class="pos-right clearfix">
+<label class="circ" role="button" ></label>
+	
+ <label class="time" datetime="{{date format='M-DD'}}">{{date format="M月DD日"}}</label>
+		
+	  
+	<div onclick="location.href='{{url}}'" class="events ">
+		<p class="pull-left">
+        <h4 class="events-heading"><a href="{{url}}">{{{title}}}</a></h4>
+	    </p>
+	    <p class="events-body"><a href="{{url}}">{{excerpt characters="120"}} &raquo;</a>
+	    </p>
+        </div>
+	 
+</ddb>
+
+
+
+
+{{/foreach}}
+
+ </dlb>
+</div>
+
+
+
+{{! Previous/next page links - displayed on every page }}
+{{pagination}}

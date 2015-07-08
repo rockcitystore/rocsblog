@@ -1,0 +1,7 @@
+﻿{
+  "name":"rockot",
+  "version": "0.1",
+  "dependencies": {
+    "ghost-app": "0.0.2"
+  }
+}
