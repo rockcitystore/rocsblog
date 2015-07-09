@@ -1,4 +1,4 @@
-# Ghost 中文版
+# Ghost Blog
 
 
 
