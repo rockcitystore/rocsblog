@@ -1,6 +1,6 @@
 # Ghost 中文版
 
-![Ghost Screenshot](http://diancloud-sc.stor.sinaapp.com/ghost/ghost-sc-1-980x630.jpg)
+
 
 Ghost是迄今为止最好用的开源博客平台。Ghost博客由前WordPress主管  [John O'Nolan](http://twitter.com/JohnONolan) 和美女工程师 [Hannah Wolfe](http://twitter.com/ErisDS) 创立。开源社区支持率远超WordPress。 [贡献者列表](https://github.com/diancloud/Ghost/contributors)
 
